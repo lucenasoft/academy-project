@@ -11,7 +11,6 @@ public class HomeController {
     public ModelAndView index() {
         ModelAndView model = new ModelAndView();
         model.setViewName("home/index");
-        model.addObject("msg","Mensagem vinda do controller");
         return model;
     }
 }

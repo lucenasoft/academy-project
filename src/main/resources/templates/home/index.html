@@ -4,24 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
     <script src="https://kit.fontawesome.com/006642858d.js"></script>
     <title>Project Academy</title>
-    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-white" style="background-color: rgb(144, 144, 144); ">
+        <nav class="navbar navbar-expand-lg navbar-white" style="background-color: #a55eea;">
             <a class="navbar-brand" href="#">
                 <img width="90px" th:src="@{/img/logo.png}" alt="logo">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile">
-                <span class="navbar-toggler-icon"></span>
+                <i class="fas fa-bars"></i> <!-- Ícone do menu hamburger -->
             </button>
             <div id="navMobile" class="navbar-collapse collapse justify-content-end">
-                <a class="nav-item nav-link" href="#">Home</a>
-                <a class="nav-item nav-link" href="#">Cadastrar Aluno</a>
-                <a class="nav-item nav-link" href="#">Pesquisar Aluno</a>
-                <a class="nav-item nav-link btn-danger" href="#">Sair</a>
+                <a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> Home</a>
+                <a class="nav-item nav-link" href="#"><i class="fas fa-user-plus"></i> Register Student</a>
+                <a class="nav-item nav-link" href="#"><i class="fas fa-search"></i> Search Student</a>
+                <a class="nav-item nav-link btn-danger btn-logout" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </nav>
     </header>
@@ -29,16 +30,16 @@
         <div class="shadow"></div>
 
     <div class="center neo-container">
-            <h1 class="text-center">Sistema de Gerenciamento de Alunos</h1>
+            <h1 class="text-center">Student Management System</h1>
             <div class="buttons">
                 <div class="wm">
                     <h5 class="btn">
-                        Cadastrar Aluno
+                        Register Student
                     </h5>
                 </div>
                 <div class="wm">
                     <h5 class="btn justify-content-center">
-                        Encontrar Aluno
+                        Search Student
                     </h5>
                 </div>
             </div>
