@@ -10,22 +10,9 @@
     <title>Project Academy</title>
 </head>
 <body>
-    <header>
-        <nav class="navbar navbar-expand-lg navbar-white" style="background-color: #a55eea;">
-            <a class="navbar-brand" href="#">
-                <img width="90px" th:src="@{/img/logo.png}" alt="logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile">
-                <i class="fas fa-bars"></i> <!-- Ícone do menu hamburger -->
-            </button>
-            <div id="navMobile" class="navbar-collapse collapse justify-content-end">
-                <a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> Home</a>
-                <a class="nav-item nav-link" href="#"><i class="fas fa-user-plus"></i> Register Student</a>
-                <a class="nav-item nav-link" href="#"><i class="fas fa-search"></i> Search Student</a>
-                <a class="nav-item nav-link btn-danger btn-logout" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
-            </div>
-        </nav>
-    </header>
+
+    <div th:replace="fragments/fragments :: header"> </div>
+
     <section class="neo-section" style="background-image: url('');">
         <div class="shadow"></div>
 
@@ -44,16 +31,14 @@
                 </div>
             </div>
     </div>
-
         <div class="clear">
         </div>
-
     </section>
 
-    <footer class="rodape">
-        <span>Todos os direitos reservados - 2023 &copy; Patricio Gabriel</span>
-    </footer>
+    <div th:replace="fragments/fragments :: footer"></div> 
+
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+
 </body>
 </html>

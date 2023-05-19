@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/006642858d.js"></script>
+    <title>Project Academy</title>
+</head>
+<body>
+    <!-- HEADER -->
+    <header th:fragment="header">
+        <nav class="navbar navbar-expand-lg navbar-white" style="background-color: #a55eea;">
+            <a class="navbar-brand" th:href="@{/}">
+                <img width="90px" th:src="@{/img/logo.png}" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navMobile">
+                <i class="fas fa-bars"></i> <!-- Ícone do menu hamburger -->
+            </button>
+            <div id="navMobile" class="navbar-collapse collapse justify-content-end">
+                <a class="nav-item nav-link" href="#"><i class="fas fa-home"></i> Home</a>
+                <a class="nav-item nav-link" href="#"><i class="fas fa-user-plus"></i> Register Student</a>
+                <a class="nav-item nav-link" href="#"><i class="fas fa-search"></i> Search Student</a>
+                <a class="nav-item nav-link btn-danger btn-logout" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Footer -->
+
+    <footer class="rodape" th:fragment="footer">
+        <span>Todos os direitos reservados - 2023 &copy; Patricio Gabriel</span>
+    </footer>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
