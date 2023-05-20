@@ -22,7 +22,8 @@ public class StudentModel implements Serializable {
     private UUID id;
     private String name;
     private Course course;
-    private String matricula;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private String enrollment;
     private Status status;
     private Shift shift;
 }

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/006642858d.js"></script>
+    <title>Insert Student</title>
+</head>
+
+<body>
+    <div th:replace="fragments/fragments :: header"> </div>
+    <div class="container" style="margin-top: 50px;">
+        <h4>
+            <i class="fas fa-user-plus"></i> Insert Student
+        </h4>
+        <hr>
+        <form method="post" action="/insertStudents" th:object="${student}">
+
+            <div class="row"></div>
+            <div class="col-md-5 form-group">
+                <label>
+                    Name:
+                </label>
+                <input class="form-control" placeholder="John Lucian" th:field="*{name}">
+            </div>
+
+            <div class="row"></div>
+            <div class="col-md-5 form-group">
+                <label>
+                    Select course:
+                </label>
+                <select class="form-control">
+                    <option th:each="course : ${T(br.com.lucenasoft.academy.Enums.Course).values()}"
+                        th:value="${course}" th:text="${course}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="row"></div>
+            <div class="col-md-5 form-group">
+                <label>
+                    Select status:
+                </label>
+                <select class="form-control">
+                    <option th:each="status : ${T(br.com.lucenasoft.academy.Enums.Status).values()}"
+                        th:value="${status}" th:text="${status}">
+                    </option>
+                </select>
+            </div>
+
+            <div class="row"></div>
+            <div class="col-md-5 form-group">
+                <label>
+                    Select shift:
+                </label>
+                <select class="form-control">
+                    <option th:each="shift : ${T(br.com.lucenasoft.academy.Enums.Shift).values()}" th:value="${shift}"
+                        th:text="${shift}">
+                    </option>
+                </select>
+            </div>
+
+        </form>
+    </div>
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+    <script th:src="@{/js/main.js}"></script>
+
+</body>
+
+</html>
