@@ -20,10 +20,23 @@ public class StudentModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
+
     private String name;
+
+    @Enumerated(EnumType.STRING)
     private Course course;
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private String enrollment;
+
+    @Enumerated(EnumType.STRING)
     private Status status;
+
+    @Enumerated(EnumType.STRING)
     private Shift shift;
+
+    public void generateEnrollment() {
+        UUID uuid = UUID.randomUUID();
+        long id = Math.abs(uuid.getMostSignificantBits() % 1000000);
+        enrollment = String.format("%06d", id);
+    }
 }
