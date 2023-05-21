@@ -28,9 +28,17 @@ public class StudentController{
     @PostMapping("/addStudents")
     public ModelAndView addStudent(StudentModel student) {
         ModelAndView mv = new ModelAndView();
-        mv.setViewName("redirect:/insertStudents");
+        mv.setViewName("redirect:/list-students");
         student.generateEnrollment();
         repository.save(student);
+        return mv;
+    }
+
+    @GetMapping("/list-students")
+    public ModelAndView getAllstudents() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("student/listStudents");
+        mv.addObject("studentslist", repository.findAll());
         return mv;
     }
 }
