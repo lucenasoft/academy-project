@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/006642858d.js"></script>
+    <title>Project Academy</title>
+</head>
+<body>
+    <div th:replace="~{fragments/fragments :: header}"> </div>
+
+    <div class="container" style="margin-top: 50px;">
+        <h3>Last students actives</h3>
+        <hr>
+        <table class="table table-bordered table-hover">
+            <thead>
+                <th scope="col">Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Enrollment</th>
+                <th scope="col">Status</th>
+                <th scope="col">Shift</th>
+                <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+                <tr scope="row" th:each="students : ${studentsCanceled}">
+                    <td th:text="${students.name}"></td>
+                    <td th:text="${students.course}"></td>
+                    <td th:text="${students.enrollment}"></td>
+                    <td th:text="${students.status}"></td>
+                    <td th:text="${students.shift}"></td>
+                    <td>
+                        <a href="#" class="btn btn-primary" th:href="@{alter/{id}(id=${students.id})}">
+                            <i class="fas fa-edit"></i> Edit</a>
+                        <a href="#" class="btn btn-danger" th:href="@{delete/{id}(id=${students.id})}">
+                            <i class="fas fa-trash-alt"></i> Remove</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>

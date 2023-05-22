@@ -1,10 +1,9 @@
 package br.com.lucenasoft.academy.Enums;
 
 public enum Status {
-    ATIVO("Ativo"),
-    INATIVO("Inativo"),
-    TRANCADO("Trancado"),
-    CANCELADO("Cancelado");
+    ACTIVE("Active"),
+    BRAIDED("Braided"),
+    CANCELED("Canceled");
 
     private String status;
 

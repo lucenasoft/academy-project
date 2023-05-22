@@ -16,7 +16,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 @Entity
-@Table(name = "alunos")
+@Table(name = "students")
 public class StudentModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)

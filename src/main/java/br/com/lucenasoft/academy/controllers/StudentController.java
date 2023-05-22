@@ -71,4 +71,35 @@ public class StudentController{
         mv.setViewName("redirect:/list-students");
         return mv;
     }
+
+    @GetMapping("filter-students")
+    public ModelAndView filterStudents(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("student/filterStudent");
+        return mv;
+    }
+
+    @GetMapping("/list-actives")
+    public ModelAndView listAllactives() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("student/actives");
+        mv.addObject("studentsActives", repository.findByStatusActive());
+        return mv;
+    }
+
+    @GetMapping("/list-braided")
+    public ModelAndView listAllbraided() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("student/braideds");
+        mv.addObject("studentsBraided", repository.findByStatusBraided());
+        return mv;
+    }
+
+    @GetMapping("/list-canceled")
+    public ModelAndView listAllcanceled() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("student/canceleds");
+        mv.addObject("studentsCanceled", repository.findByStatusCanceled());
+        return mv;
+    }
 }
