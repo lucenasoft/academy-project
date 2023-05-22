@@ -29,10 +29,9 @@ public class StudentController{
     public ModelAndView addStudent(@Valid StudentModel student, BindingResult br) {
         ModelAndView mv = new ModelAndView();
         if (br.hasErrors()) {
-            mv.addObject("student", student);
             mv.setViewName("student/formStudent");
+            mv.addObject("studentModel", student);
         } else {
-            System.out.println("Ta passando aqui, sa bomba");
             mv.setViewName("redirect:/list-students");
             student.generateEnrollment();
             repository.save(student);
