@@ -9,7 +9,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
 import java.util.UUID;
+
 
 @Controller
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -100,6 +102,20 @@ public class StudentController{
         ModelAndView mv = new ModelAndView();
         mv.setViewName("student/canceleds");
         mv.addObject("studentsCanceled", repository.findByStatusCanceled());
+        return mv;
+    }
+
+    @PostMapping("/search-student")
+    public ModelAndView searchStudent(@RequestParam(required = false) String name){
+        ModelAndView mv = new ModelAndView();
+        List<StudentModel> listStudents;
+        if(name == null || name.trim().isEmpty()){
+            listStudents = repository.findAll();
+        } else {
+            listStudents = repository.findByNameContainingIgnoreCase(name);
+        }
+        mv.addObject("listStudents", listStudents);
+        mv.setViewName("student/resultSearch");
         return mv;
     }
 }

@@ -22,7 +22,7 @@
             <div id="navMobile" class="navbar-collapse collapse justify-content-end">
                 <a class="nav-item nav-link" th:href="@{/}"><i class="fas fa-home"></i> Home</a>
                 <a class="nav-item nav-link" th:href="@{/insertStudents}"><i class="fas fa-user-plus"></i> Register Student</a>
-                <a class="nav-item nav-link" th:href="@{/filter-students}"><i class="fas fa-search"></i> Search Student</a>
+                <a data-toggle="modal" data-target="#modalPesquisa" class="nav-item nav-link" ><i class="fas fa-search"></i> Search Student</a>
                 <a class="nav-item nav-link btn-danger btn-logout" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
             </div>
         </nav>
@@ -33,6 +33,31 @@
     <footer class="rodape" th:fragment="footer">
         <span>Todos os direitos reservados - 2023 &copy; Patricio Gabriel</span>
     </footer>
+
+    <!-- Modal search -->
+
+    <div class="modal fade" id="modalPesquisa" th:fragment="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+
+                    <h5 class="modal-title">Find one student</h5>
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span>&times;</span>
+                    </button>
+                </div>
+                <form method="POST" th:action="@{/search-student}" th:object="${student}" th:csrf="${_csrf.token}">
+                    <div class="modal-body">
+                        <input placeholder="Search for student name..." type="text" th:field="*{name}" class="form-control">
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Search</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>

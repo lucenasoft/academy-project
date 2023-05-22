@@ -17,4 +17,6 @@ public interface StudentRepository extends JpaRepository<StudentModel, UUID> {
 
     @Query("select s from StudentModel s where s.status = 'CANCELED'")
     public List<StudentModel> findByStatusCanceled();
+
+    public List<StudentModel> findByNameContainingIgnoreCase(String name);
 }
