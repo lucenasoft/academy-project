@@ -1,9 +1,10 @@
 package br.com.lucenasoft.academy.models;
-
 import br.com.lucenasoft.academy.Enums.Course;
 import br.com.lucenasoft.academy.Enums.Status;
 import br.com.lucenasoft.academy.Enums.Shift;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 import java.io.Serializable;
@@ -21,6 +22,8 @@ public class StudentModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
+    @NotBlank(message = "O campo name não pode estar em branco")
+    @Size(min = 5, max = 35, message = "Deve conter pelo menos 5 caracteres")
     private String name;
 
     @Enumerated(EnumType.STRING)
