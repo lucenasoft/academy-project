@@ -1,7 +1,9 @@
 package br.com.lucenasoft.academy.controllers;
 
+import br.com.lucenasoft.academy.Exceptions.CriptoExistsException;
 import br.com.lucenasoft.academy.models.UserModel;
 import br.com.lucenasoft.academy.repositories.UserRepository;
+import br.com.lucenasoft.academy.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,7 +14,11 @@ import org.springframework.web.servlet.ModelAndView;
 public class UserController {
 
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    private UserService userService;
+
 
     @GetMapping("/")
     public ModelAndView signIn(){
@@ -30,9 +36,9 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public ModelAndView saveUser(UserModel user){
+    public ModelAndView saveUser(UserModel user) throws Exception {
         ModelAndView mv = new ModelAndView();
-        userRepository.save(user);
+        userService.saveUser(user);
         mv.setViewName("redirect:/");
         return mv;
     }

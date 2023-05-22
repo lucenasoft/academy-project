@@ -28,6 +28,6 @@ public class UserModel {
     private String username;
 
     @NotBlank
-    @Size(min = 8, max = 20)
+    @Size(min = 8, max = 50)
     private String password;
 }
