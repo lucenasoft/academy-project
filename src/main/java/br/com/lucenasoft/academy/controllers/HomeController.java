@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @RestController
 public class HomeController {
-    @GetMapping("/")
+    @GetMapping("/index")
     public ModelAndView index() {
         ModelAndView model = new ModelAndView();
         model.setViewName("home/index");

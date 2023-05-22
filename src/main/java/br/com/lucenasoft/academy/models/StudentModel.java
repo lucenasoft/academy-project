@@ -22,8 +22,8 @@ public class StudentModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    @NotBlank(message = "O campo name não pode estar em branco")
-    @Size(min = 5, max = 35, message = "Deve conter pelo menos 5 caracteres")
+    @NotBlank(message = "The name field cannot be blank")
+    @Size(min = 5, max = 35, message = "Must contain at least 5 characters")
     private String name;
 
     @Enumerated(EnumType.STRING)

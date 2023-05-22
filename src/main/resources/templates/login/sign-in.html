@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" th:href="@{/css/login.css}" href="/css/style.css">
+    <script src="https://kit.fontawesome.com/006642858d.js"></script>
+    <title>Project Academy - Sign-In</title>
+</head>
+<body>
+    <div class="page">
+        <form method="POST" class="formLogin">
+            <h1>Sign-In</h1>
+            <p>Enter your access data in the field below.</p>
+            <label for="email">E-mail</label>
+            <input type="email" placeholder="Type your e-mail" autofocus="true" th:field="*{email}" />
+            <label for="password">Password</label>
+            <input type="password" placeholder="Type your password" />
+            <a href="/register">Don't have an account? Register</a>
+            <input type="submit" value="Sign-in" class="btn" />
+        </form>
+    </div>
+    <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 
-@Controller
+@RestController
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 public class StudentController{
     @Autowired
