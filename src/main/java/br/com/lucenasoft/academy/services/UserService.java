@@ -2,6 +2,7 @@ package br.com.lucenasoft.academy.services;
 
 import br.com.lucenasoft.academy.Exceptions.CriptoExistsException;
 import br.com.lucenasoft.academy.Exceptions.EmailExistsException;
+import br.com.lucenasoft.academy.Exceptions.ServiceExc;
 import br.com.lucenasoft.academy.models.UserModel;
 import br.com.lucenasoft.academy.repositories.UserRepository;
 import br.com.lucenasoft.academy.util.Util;
@@ -25,5 +26,8 @@ public class UserService {
             throw new CriptoExistsException("Error");
         }
         repository.save(user);
+    }
+    public UserModel signUser(String username, String password) throws ServiceExc {
+        return repository.findLogin(username, password);
     }
 }

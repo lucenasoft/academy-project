@@ -9,4 +9,7 @@ import java.util.UUID;
 public interface UserRepository extends JpaRepository<UserModel, UUID> {
     @Query("select s from UserModel s where s.email = :email")
     public UserModel findByEmail(String email);
+
+    @Query("select s from UserModel s where s.username = :username and s.password = :password")
+    public UserModel findLogin(String username, String password);
 }
