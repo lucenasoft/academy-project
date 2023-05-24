@@ -14,6 +14,7 @@
     <div th:replace="~{fragments/fragments :: header}"> </div>
 
     <section class="neo-section" style="background-image: url('');">
+        <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}">
         <div class="shadow"></div>
 
     <div class="center neo-container">

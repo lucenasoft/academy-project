@@ -13,7 +13,8 @@
 
 <body>
     <div class="page">
-        <form method="POST" class="formLogin" th:object="${user}" th:action="@{/sign-in}" th:csrf="${_csrf.token}">
+        <form method="POST" class="formLogin" th:object="${user}" th:action="@{/sign-in}">
+            <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}">
 
             <div class="alert alert-danger" role="alert" th:if="${msg}">
                 <strong th:text="${msg}"></strong>

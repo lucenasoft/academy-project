@@ -48,7 +48,8 @@
                         <span>&times;</span>
                     </button>
                 </div>
-                <form method="POST" th:action="@{/search-student}" th:object="${student}" th:csrf="${_csrf.token}">
+                <form method="POST" th:action="@{/search-student}" th:object="${student}">
+                    <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}">
                     <div class="modal-body">
                         <input placeholder="Search for student name..." type="text" th:field="*{name}" class="form-control">
                     </div>

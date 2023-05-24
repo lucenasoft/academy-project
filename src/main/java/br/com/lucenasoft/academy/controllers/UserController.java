@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 @RestController
 public class UserController {
@@ -25,7 +26,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
 
     @GetMapping("/")
     public ModelAndView signIn(){
@@ -44,7 +44,7 @@ public class UserController {
     }
 
     @PostMapping("/saveUser")
-    public ModelAndView saveUser(@Valid UserModel user, BindingResult br) throws Exception {
+    public ModelAndView saveUser(@Valid UserModel user, BindingResult br, HttpSession session) throws Exception {
         ModelAndView mv = new ModelAndView();
         if(br.hasErrors()) {
             mv.setViewName("login/register");
@@ -57,11 +57,15 @@ public class UserController {
     }
 
     @GetMapping("/index")
-    public ModelAndView index() {
-        ModelAndView model = new ModelAndView();
-        model.setViewName("home/index");
-        model.addObject("student", new StudentModel());
-        return model;
+    public ModelAndView index(HttpSession session) {
+        ModelAndView mv = new ModelAndView();
+        UserModel userLogged = (UserModel) session.getAttribute("userLogged");
+        if (userLogged == null) {
+            return signIn();
+        }
+        mv.setViewName("home/index");
+        mv.addObject("student", new StudentModel());
+        return mv;
     }
 
     @PostMapping("/sign-in")
@@ -74,9 +78,12 @@ public class UserController {
         UserModel userSignIn = userService.signUser(user.getUsername(), Util.md5(user.getPassword()));
         if(userSignIn == null) {
             mv.addObject("msg","User not found");
+            mv.setViewName("login/sign-in");
         } else {
-            session.setAttribute("userLogged",userSignIn);
-            return index();
+            String csrfToken = UUID.randomUUID().toString();
+            session.setAttribute("userLogged", userSignIn);
+            session.setAttribute("csrfToken", csrfToken);
+            mv.setViewName("redirect:/index");
         }
         return mv;
     }
@@ -86,5 +93,4 @@ public class UserController {
         session.invalidate();
         return signIn();
     }
-
 }
