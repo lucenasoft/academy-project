@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" href="/css/style.css" />
     <script src="https://kit.fontawesome.com/006642858d.js"></script>
     <title>Project Academy</title>
 </head>
+
 <body>
+    <div class="shadow">
+        <div th:replace="~{fragments/fragments :: header}"></div>
 
-    <div th:replace="~{fragments/fragments :: header}"> </div>
+        <section class="neo-section" style="background-image: url('')">
+            <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}" />
 
-    <section class="neo-section" style="background-image: url('');">
-        <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}">
-        <div class="shadow"></div>
-
-    <div class="center neo-container">
-            <h1 class="text-center">Student Management System</h1>
-            <div class="buttons">
-                <div class="wm">
+            <div class="center neo-container">
+                <h1 class="text-center">Student Management System</h1>
+                <div class="buttons">
+                    <div class="wm">
                         <a class="btn-home" th:href="@{/insertStudents}">
                             Register Student
                         </a>
-                </div>
-                <div class="wm">
-                    <a class="btn-home justify-content-center" th:href="@{/list-students}">
-                        Search Student
-                    </a>
+                    </div>
+                    <div class="wm">
+                        <a class="btn-home justify-content-center" th:href="@{/list-students}">
+                            Search Student
+                        </a>
+                    </div>
                 </div>
             </div>
+            <div class="clear"></div>
+        </section>
+
+        <div th:replace="~{fragments/fragments :: modal}"></div>
+
+        <div th:replace="~{fragments/fragments :: footer}"></div>
+
     </div>
-        <div class="clear">
-        </div>
-    </section>
-
-    <div th:replace="~{fragments/fragments :: modal}"></div> 
-
-    <div th:replace="~{fragments/fragments :: footer}"></div> 
 
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-
 </body>
+
 </html>

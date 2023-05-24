@@ -1,61 +1,108 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link rel="stylesheet" th:href="@{/css/register.css}" href="/css/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      th:href="@{/css/register.css}"
+      href="/css/style.css"
+    />
     <script src="https://kit.fontawesome.com/006642858d.js"></script>
     <title>Project Academy - Register</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="page">
-        <form method="POST" class="formLogin" th:object="${userModel}" th:action="@{/saveUser}">
-            <input type="hidden" name="csrfToken" value="${sessionScope.csrfToken}">
-            <h1>Register</h1>
-            <div class="alert alert-danger" role="alert" th:if="${msg}">
-                <strong th:text="${msg}"></strong>
-            </div>
-            <p>Enter your data to register in the fields below.</p>
-            <label for="name">Name</label>
-            <input type="text" placeholder="Type your name" th:field="*{username}" />
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('username')}">
-                <label class="validation-message" th:errors="*{username}"></label>
-            </div>
-            <label for="email">E-mail</label>
-            <input type="email" placeholder="Type your e-mail" th:field="*{email}" />
-            <div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('email')}">
-                <label class="validation-message" th:errors="*{email}"></label>
-            </div>
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Type your password" th:field="*{password}" />
-            <label for="confirmPassword">Confirm your password</label>
-            <input type="password" id="confirmPassword" placeholder="Retype your password" />
-            <span id="passwordError" style="color: red; display: none;">Passwords do not match.</span>
-            <a href="/">Already registered? Login now</a>
-            <input type="submit" value="Register" class="btn" onclick="return validatePassword();" />
-        </form>
-        <script>
-            function validatePassword() {
-                var password = document.getElementById("password").value;
-                var confirmPassword = document.getElementById("confirmPassword").value;
-                var passwordError = document.getElementById("passwordError");
+      <form
+        method="POST"
+        class="formLogin"
+        th:object="${userModel}"
+        th:action="@{/saveUser}"
+      >
+        <input
+          type="hidden"
+          name="csrfToken"
+          value="${sessionScope.csrfToken}"
+        />
+        <h1>Register</h1>
+        <div class="alert alert-danger" role="alert" th:if="${msg}">
+          <strong th:text="${msg}"></strong>
+        </div>
+        <p>Enter your data to register in the fields below.</p>
+        <label for="name">Name</label>
+        <input
+          type="text"
+          placeholder="Type your name"
+          th:field="*{username}"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          th:if="${#fields.hasErrors('username')}"
+        >
+          <label class="validation-message" th:errors="*{username}"></label>
+        </div>
+        <label for="email">E-mail</label>
+        <input
+          type="email"
+          placeholder="Type your e-mail"
+          th:field="*{email}"
+        />
+        <div
+          class="alert alert-danger"
+          role="alert"
+          th:if="${#fields.hasErrors('email')}"
+        >
+          <label class="validation-message" th:errors="*{email}"></label>
+        </div>
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          placeholder="Type your password"
+          th:field="*{password}"
+        />
+        <label for="confirmPassword">Confirm your password</label>
+        <input
+          type="password"
+          id="confirmPassword"
+          placeholder="Retype your password"
+        />
+        <span id="passwordError" style="color: red; display: none"
+          >Passwords do not match.</span
+        >
+        <a href="/">Already registered? Login now</a>
+        <input
+          type="submit"
+          value="Register"
+          class="btn"
+          onclick="return validatePassword();"
+        />
+      </form>
+      <script>
+        function validatePassword() {
+          var password = document.getElementById("password").value;
+          var confirmPassword =
+            document.getElementById("confirmPassword").value;
+          var passwordError = document.getElementById("passwordError");
 
-                if (password !== confirmPassword) {
-                    passwordError.style.display = "block";
-                    return false;
-                } else {
-                    passwordError.style.display = "none";
-                    return true;
-                }
-            }
-        </script>
+          if (password !== confirmPassword) {
+            passwordError.style.display = "block";
+            return false;
+          } else {
+            passwordError.style.display = "none";
+            return true;
+          }
+        }
+      </script>
     </div>
     <script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-</body>
-
+  </body>
 </html>
