@@ -1,6 +1,5 @@
 package br.com.lucenasoft.academy.controllers;
 
-import br.com.lucenasoft.academy.Exceptions.CriptoExistsException;
 import br.com.lucenasoft.academy.Exceptions.ServiceExc;
 import br.com.lucenasoft.academy.models.StudentModel;
 import br.com.lucenasoft.academy.models.UserModel;
@@ -80,6 +79,12 @@ public class UserController {
             return index();
         }
         return mv;
+    }
+
+    @PostMapping("/logout")
+    public ModelAndView logout(HttpSession session){
+        session.invalidate();
+        return signIn();
     }
 
 }
