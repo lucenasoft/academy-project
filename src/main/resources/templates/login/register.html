@@ -61,6 +61,10 @@
         >
           <label class="validation-message" th:errors="*{email}"></label>
         </div>
+        <div th:if="${error}" class="alert alert-danger"
+        role="alert">
+        <label class="validation-message" th:text="${error}"></label>
+        </div>
         <label for="password">Password</label>
         <input
           type="password"

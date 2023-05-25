@@ -1,5 +1,6 @@
 package br.com.lucenasoft.academy.controllers;
 
+import br.com.lucenasoft.academy.Exceptions.EmailExistsException;
 import br.com.lucenasoft.academy.Exceptions.ServiceExc;
 import br.com.lucenasoft.academy.models.StudentModel;
 import br.com.lucenasoft.academy.models.UserModel;
@@ -50,8 +51,16 @@ public class UserController {
             mv.setViewName("login/register");
             mv.addObject("user", user);
         } else {
-            userService.saveUser(user);
-            mv.setViewName("redirect:/");
+            try {
+                userService.saveUser(user);
+                mv.setViewName("redirect:/");
+                System.out.println("bateu aqui try");
+            } catch (Exception e) {
+                System.out.println("bateu aqui catch");
+                mv.setViewName("login/register");
+                mv.addObject("user", user);
+                mv.addObject("error", "Email is already used.");
+            }
         }
         return mv;
     }
